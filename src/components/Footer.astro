@@ -3,33 +3,26 @@ import Social from './Social.astro';
 ---
 
 <style>
+    footer ul {
+        display: flex;
+        list-style-type: none; /* Removes the bullet points */
+        margin: 0;
+        padding: 0;
+        justify-content: space-between; /* Evenly spaces out the links */
+        width: 100%; /* Makes sure the footer takes the full width */
+    }
+
+    footer a {
+        text-decoration: none; /* Optional: removes underlines from the links */
+        color: red; /* Optional: set link color */
+    }
+
     footer {
         display: flex; /* Set footer to flexbox */
         flex-direction: column; /* Stack content vertically */
         align-items: center; /* Center the content horizontally */
-        margin-top: 2rem;
     }
 
-    footer p {
-        margin: 0.5rem 0; /* Add space between <p> tags */
-    }
-
-    footer a {
-        margin-right: 1rem; /* Space between links */
-    }
-
-    /* Span the links across the full width */
-    footer p:first-of-type {
-        display: flex;
-        justify-content: space-between; /* Distribute links across the page */
-        width: 100%; /* Make the links container span the entire width */
-        text-align: center; /* Optionally center the links */
-    }
-
-    footer p:last-of-type {
-        text-align: center; /* Center the copyright notice */
-        width: 100%; /* Ensure copyright is on its own line */
-    }
 </style>
 
 <footer>
