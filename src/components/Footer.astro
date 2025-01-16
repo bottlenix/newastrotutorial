@@ -1,0 +1,34 @@
+---
+import Social from './Social.astro';
+---
+
+<style>
+    footer {
+    border-top: 2px solid #000;
+    display: flex;
+    justify-content: space-between; /* Distributes links across the width */
+    align-items: center; /* Vertically centers the content */
+    margin-top: 2rem;
+    padding: 1rem; /* Optional: Adds some padding around the footer */
+}
+
+footer a {
+    text-decoration: none;
+    color: #000; /* You can change the link color */
+}
+
+footer p {
+    margin: 0; /* Ensures no extra margin around the copyright text */
+    text-align: center; /* Ensures the copyright text stays centered */
+    width: 100%; /* Makes sure the copyright text spans across the whole footer */
+}
+
+</style>
+
+<footer>
+  <Social platform="twitter" username="astrodotbuild" />
+  <Social platform="github" username="withastro" />
+  <Social platform="youtube" username="astrodotbuild" />
+  <a href="twitter.com">Twitter</a>
+  <p>&copy; 2025 My Personal Blog. All rights reserved.</p>
+</footer>
