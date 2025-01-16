@@ -4,31 +4,39 @@ import Social from './Social.astro';
 
 <style>
     footer {
-    border-top: 2px solid #000;
-    display: flex;
-    justify-content: space-between; /* Distributes links across the width */
-    align-items: center; /* Vertically centers the content */
-    margin-top: 2rem;
-    padding: 1rem; /* Optional: Adds some padding around the footer */
-}
+        display: flex; /* Set footer to flexbox */
+        flex-direction: column; /* Stack content vertically */
+        align-items: center; /* Center the content horizontally */
+        margin-top: 2rem;
+    }
 
-footer a {
-    text-decoration: none;
-    color: #000; /* You can change the link color */
-}
+    footer p {
+        margin: 0.5rem 0; /* Add space between <p> tags */
+    }
 
-footer p {
-    margin: 0; /* Ensures no extra margin around the copyright text */
-    text-align: center; /* Ensures the copyright text stays centered */
-    width: 100%; /* Makes sure the copyright text spans across the whole footer */
-}
+    footer a {
+        margin-right: 1rem; /* Space between links */
+    }
 
+    /* Span the links across the full width */
+    footer p:first-of-type {
+        display: flex;
+        justify-content: space-between; /* Distribute links across the page */
+        width: 100%; /* Make the links container span the entire width */
+        text-align: center; /* Optionally center the links */
+    }
+
+    footer p:last-of-type {
+        text-align: center; /* Center the copyright notice */
+        width: 100%; /* Ensure copyright is on its own line */
+    }
 </style>
 
 <footer>
-  <Social platform="twitter" username="astrodotbuild" />
-  <Social platform="github" username="withastro" />
-  <Social platform="youtube" username="astrodotbuild" />
-  <a href="twitter.com">Twitter</a>
-  <p>&copy; 2025 My Personal Blog. All rights reserved.</p>
+    <p>
+        <Social platform="twitter" username="astrodotbuild" />
+        <Social platform="github" username="withastro" />
+        <Social platform="youtube" username="astrodotbuild" />
+    </p>
+    <p>&copy; 2025 My Personal Blog. All rights reserved.</p>
 </footer>
