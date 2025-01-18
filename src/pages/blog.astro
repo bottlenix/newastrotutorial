@@ -7,8 +7,43 @@ const pageTitle = "My Astro Learning Blog";
 ---
 <BaseLayout pageTitle={pageTitle}>
   <p>This is where I will post about my journey learning Astro.</p>
+  <!--
   <ul>
     {allPosts.map((post: any) =>
       <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
   </ul>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Post</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        {allPosts.map((post: any) =>
+          <td>{post.frontmatter.pubDate}</td>
+          <td><a href={post.url}>{post.frontmatter.title}</a></td>)}
+      </tr>
+    </tbody>
+  </table>
+-->
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Post</th>
+      </tr>
+    </thead>
+    <tbody>
+      {allPosts.map((post: any) => (
+      <tr>
+        <td>{post.frontmatter.pubDate}</td>
+        <td><a href={post.url}>{post.frontmatter.title}</a></td>
+      </tr>
+      ))}
+  </tbody>
+
+  </table>
+
 </BaseLayout>
