@@ -1,7 +1,5 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import Footer from '../components/Footer.astro';
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 const pageTitle = "All about Me";
 
 const identity = {
@@ -21,11 +19,7 @@ const skillColor = "red";
 const fontWeight = "bold";
 const textCase = "uppercase";
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
+<BaseLayout pageTitle={pageTitle}>
     <style define:vars={{skillColor, fontWeight, textCase}}>
       h1 {
         color: purple;
@@ -37,10 +31,6 @@ const textCase = "uppercase";
         text-transform: var(--textCase);
       }
     </style>
-  </head>
-  <body>
-    <Navigation />
-    <h1>{pageTitle}</h1>
     <h2>... and my new Astro site!</h2>
 
     <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
@@ -66,7 +56,4 @@ const textCase = "uppercase";
     {finished && <p>I finished this tutorial!</p>}
 
     {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-    <Footer />
-     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fe98ca2ad51345febe47e0e1981dff0f"}'></script><!-- End Cloudflare Web Analytics -->
-  </body>
-</html>
+</BaseLayout>
