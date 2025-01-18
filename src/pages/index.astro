@@ -24,6 +24,10 @@ import '../styles/global.css';
 
     <Footer />
     <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "fe98ca2ad51345febe47e0e1981dff0f"}'></script><!-- End Cloudflare Web Analytics -->
-
+    <script>
+        document.querySelector('.hamburger')?.addEventListener('click', () => {
+            document.querySelector('.nav-links')?.classList.toggle('expanded');
+});
+    </script>
 </body>
 </html>
