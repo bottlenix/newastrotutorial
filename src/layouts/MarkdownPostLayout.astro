@@ -1,4 +1,13 @@
 ---
+/*
+    * This layout is used for markdown files that are blog posts.
+    * It provides a consistent layout for blog posts.
+    * The frontmatter variables are passed to the layout from the markdown file.
+    * The BaseLayout component is used to provide the base layout for the page.
+    * The frontmatter variables are used to display the title, description, author, publication date, and image of the blog post.
+    * The slot is where the content of the blog post will be rendered.
+*/
+
 import BaseLayout from './BaseLayout.astro';
 const { frontmatter } = Astro.props;
 ---
