@@ -1,4 +1,10 @@
 ---
+/*
+    This is the footer component. It contains the social media links and the license information.
+    The social media links are generated using the Social component.
+    The license information is displayed using a Creative Commons license.
+*/
+
 import Social from './Social.astro';
 ---
 <style>
@@ -34,6 +40,10 @@ import Social from './Social.astro';
     <p>begin footer</p>
     <p>
         <ul>
+            <!--
+            the variables platform and username are sent to the
+            Social.astro component
+            -->
             <Social platform="twitter" username="astrodotbuild" />
             <Social platform="github" username="withastro" />
             <Social platform="youtube" username="astrodotbuild" />
