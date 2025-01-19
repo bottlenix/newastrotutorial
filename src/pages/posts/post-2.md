@@ -12,3 +12,15 @@ tags: ["astro", "blogging", "learning in public", "successes"]
 After a successful first week learning Astro, I decided to try some more. I wrote and imported a small component from memory!
 
 Still got it!
+
+Going to add some code:
+
+```
+this is supposed to be code
+10 PRINT "HELLO"
+20 GOTO 10
+```
+
+Let's see how it renders
+
+What if we define a variable called `navLinks` which we make an array?
