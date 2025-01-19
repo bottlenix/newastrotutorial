@@ -1,0 +1,10 @@
+---
+/*
+    * This component is responsible for rendering the navigation links.
+    * The navigation links are passed as props to this component from
+    * the Navigation component.
+*/
+const { url, title } = Astro.props;
+---
+
+<li><a href={url}>{title}</a></li>

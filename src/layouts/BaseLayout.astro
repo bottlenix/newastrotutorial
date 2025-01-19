@@ -1,4 +1,16 @@
 ---
+/*
+  * Base layout for all pages
+  * This layout includes the Header and Footer components
+  * The Header component contains the site title and navigation links
+  * The Footer component contains the social media links and license information
+  * The social media links are generated using the Social component
+  * The pageTitle variable is passed to the layout from the page component
+  * The slot is where the content of the page will be rendered
+  * The global styles are imported to style the layout
+  * 
+*/
+
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
@@ -17,10 +29,5 @@ const { pageTitle } = Astro.props;
     <h3>BaseLayout Title={pageTitle}</h3>
     <slot />
     <Footer />
-    <!--
-    <script>
-      import "../scripts/menu.js";
-    </script>
-    -->
   </body>
 </html>

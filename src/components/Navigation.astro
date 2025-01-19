@@ -1,4 +1,5 @@
 ---
+import NavigationLinks from './NavigationLinks.astro';
 ---
 
 <style>
@@ -21,8 +22,13 @@
 
 <nav>
     <ul>
-    <li><a href="/">Nav-Home</a></li>
-    <li><a href="/about/">Nav-About</a></li>
-    <li><a href="/blog/">Nav-Blog</a></li>
+        <!--
+            The NavigationLinks component is used to create the navigation links.
+            The url and title are passed as props to the NavigationLinks
+            component.
+        -->
+        <NavigationLinks url="/" title="Nav-Home" />
+        <NavigationLinks url="/about/" title="Nav-About" />
+        <NavigationLinks url="/blog/" title="Nav-Blog" />
     </ul>
 </nav>
