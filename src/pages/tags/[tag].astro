@@ -1,4 +1,10 @@
 ---
+/*
+  See this page for more information on how to create dynamic routes
+  to build this tag page:
+  https://docs.astro.build/en/tutorial/5-astro-api/2/
+*/
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPost from '../../components/BlogPost.astro';
 
@@ -14,6 +20,8 @@ import BlogPost from '../../components/BlogPost.astro';
 */
 export async function getStaticPaths() {
 
+  const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
+
 /*
     The following props in the getStaticPaths() function make data
     from all the blog posts available to each page route.
@@ -21,7 +29,6 @@ export async function getStaticPaths() {
     Make those props available to the component template outside the
     function.
 */
-  const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
 
   return [
     {params: {tag: "astro"}, props: {posts: allPosts}},
