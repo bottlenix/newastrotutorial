@@ -1,19 +1,70 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogPost from '../../components/BlogPost.astro';
 
+/*
+    The getStaticPaths function returns an array of page routes,
+    and all of the pages at those routes will use the same template
+    defined in the file.
+
+    The getStaticProps function returns an object with the props
+    that will be passed to the template when the page is rendered.
+    The props object can be any shape, but it must be serializable
+    to JSON.
+*/
 export async function getStaticPaths() {
+
+/*
+    The following props in the getStaticPaths() function make data
+    from all the blog posts available to each page route.
+
+    Make those props available to the component template outside the
+    function.
+*/
+  const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
+
   return [
-    { params: { tag: "astro" } },
-    { params: { tag: "successes" } },
-    { params: { tag: "community" } },
-    { params: { tag: "blogging" } },
-    { params: { tag: "setbacks" } },
-    { params: { tag: "learning in public" } },
+    {params: {tag: "astro"}, props: {posts: allPosts}},
+    {params: {tag: "successes"}, props: {posts: allPosts}},
+    {params: {tag: "community"}, props: {posts: allPosts}},
+    {params: {tag: "blogging"}, props: {posts: allPosts}},
+    {params: {tag: "setbacks"}, props: {posts: allPosts}},
+    {params: {tag: "learning in public"}, props: {posts: allPosts}}
   ];
 }
 
 const { tag } = Astro.params;
+const { posts } = Astro.props;
+
+/*
+    The following code filters the posts by the tag that is passed
+    in the URL.
+*/
+const filteredPosts = posts.filter((post: any) => post.frontmatter.tags?.includes(tag));
 ---
+
 <BaseLayout pageTitle={tag}>
   <p>Posts tagged with {tag}</p>
+  <!--
+  <ul>
+    {filteredPosts.map((post: any) =>
+        <BlogPost url={post.url} title={post.frontmatter.title}/>)}
+  </ul>
+  -->
+  <table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Post</th>
+    </tr>
+  </thead>
+  <tbody>
+    {filteredPosts.map((post: any) =>
+      <BlogPost
+        url   = {post.url}
+        title = {post.frontmatter.title}
+        date  = {post.frontmatter.pubDate}/>
+    )}
+  </tbody>
+  </table>
 </BaseLayout>
