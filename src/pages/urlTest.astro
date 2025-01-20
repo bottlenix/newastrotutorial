@@ -1,0 +1,19 @@
+---
+//import { Astro } from "astro";
+const currentPath = Astro.url.pathname;
+const currentUrl = Astro.request.url;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Astro Blog</title>
+  </head>
+  <body>
+    <h1>Welcome to My Blog</h1>
+    <p>Current Page Path: {currentPath}</p>
+    <p>Current Page Full URL: {currentUrl}</p>
+  </body>
+</html>
