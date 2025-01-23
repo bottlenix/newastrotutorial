@@ -22,42 +22,43 @@ export async function getStaticPaths() {
 
   const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
 
-/*
-    The following props in the getStaticPaths() function make data
-    from all the blog posts available to each page route.
+  /*
+    The following code creates an array of unique tags from all of the posts.
+    The array is then mapped to an array of objects, where each object has
+    a params key with a tag key that is the tag name, and a props key with
+    a posts key that is an array of posts that have that tag.
+    The following line goes through each Markdown post, one by one, and
+    combines each array of tags into one single larger array. Then, it makes
+    a new `Set` from all the individual tags it found (to ignore repeated values).
+    Finally, it turns that set into an array (with no duplications), that you
+    can use to show a list of tags on your page.
+  */
+  const uniqueTags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
 
-    Make those props available to the component template outside the
-    function.
-*/
-
-  return [
-    {params: {tag: "astro"}, props: {posts: allPosts}},
-    {params: {tag: "successes"}, props: {posts: allPosts}},
-    {params: {tag: "community"}, props: {posts: allPosts}},
-    {params: {tag: "blogging"}, props: {posts: allPosts}},
-    {params: {tag: "setbacks"}, props: {posts: allPosts}},
-    {params: {tag: "learning in public"}, props: {posts: allPosts}}
-  ];
+  /*
+    The following code maps the unique tags to an array of objects, where each
+    object has a params key with a tag key that is the tag name, and a props key
+    with a posts key that is an array of posts that have that tag.
+    A `getStaticPaths` function should always return a list of objects containing params
+    (what to call each page route) and optionally any props (data that you want to pass
+    to those pages).  Now, we generate this list of objects automatically using our
+    `uniqueTags` array to define each parameter.
+  */
+  return uniqueTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post: any) => post.frontmatter.tags.includes(tag));
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
-const { tag } = Astro.params;
+const { tag }   = Astro.params;
 const { posts } = Astro.props;
-
-/*
-    The following code filters the posts by the tag that is passed
-    in the URL.
-*/
-const filteredPosts = posts.filter((post: any) => post.frontmatter.tags?.includes(tag));
 ---
 
 <BaseLayout pageTitle={tag}>
   <p>Posts tagged with {tag}</p>
-  <!--
-  <ul>
-    {filteredPosts.map((post: any) =>
-        <BlogPost url={post.url} title={post.frontmatter.title}/>)}
-  </ul>
-  -->
   <table>
   <thead>
     <tr>
@@ -66,7 +67,7 @@ const filteredPosts = posts.filter((post: any) => post.frontmatter.tags?.include
     </tr>
   </thead>
   <tbody>
-    {filteredPosts.map((post: any) =>
+    {posts.map((post: any) =>
       <BlogPost
         url   = {post.url}
         title = {post.frontmatter.title}
