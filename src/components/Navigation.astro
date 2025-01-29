@@ -1,11 +1,5 @@
 ---
-import NavigationLinks from './NavigationLinks.astro';
-
-const navLinks = [
-  { url: "/", title: "Nav-Home" },
-  { url: "/about/", title: "Nav-About" },
-  { url: "/blog/", title: "Nav-Blog" },
-];
+import { NAV_LINKS } from '../consts';
 ---
 
 <style>
@@ -33,8 +27,8 @@ const navLinks = [
             The url and title are passed as props to the NavigationLinks
             component.
         -->
-        {navLinks.map((link) => (
-            <NavigationLinks url={link.url} title={link.title} />
+        {NAV_LINKS.map((link) => (
+            <li><a href={link.url}>{link.title}</a></li>
         ))}
     </ul>
 </nav>
