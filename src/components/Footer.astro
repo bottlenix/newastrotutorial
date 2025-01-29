@@ -6,12 +6,7 @@
 */
 
 import Social from './Social.astro';
-
-const socialLinks = [
-    { platform: "twitter", username: "astrodotbuild" },
-    { platform: "github", username: "withastro" },
-    { platform: "youtube", username: "astrodotbuild" },
-];
+import { SOCIAL_LINKS } from '../consts';
 ---
 <style>
     footer ul {
@@ -50,14 +45,9 @@ const socialLinks = [
             the variables platform and username are sent to the
             Social.astro component
             -->
-            {socialLinks.map((link) => (
+            {SOCIAL_LINKS.map((link) => (
                 <Social platform={link.platform} username={link.username} />
             ))}
-            <!--
-            <Social platform="twitter" username="astrodotbuild" />
-            <Social platform="github" username="withastro" />
-            <Social platform="youtube" username="astrodotbuild" />
-            -->
         </ul>
     </p>
     <p>&copy; 2025 My Personal Blog. All rights reserved.</p>
