@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: Latest Update
-pubDate: 20 January 2025
+title: 19 April 2024
+pubDate: 2024-04-19
 description: This is what has been happening since we last met
 author: Astro Learner
 image:

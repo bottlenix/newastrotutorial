@@ -1,6 +1,7 @@
 ---
-title: 'The greatest post of all time'
+title: 23 November 2021
 author: 'Ben'
+pubDate: 2021-11-23
 //tags: ["astro", "blogging", "learning in public"]
 ---
 

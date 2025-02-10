@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
-title: Creating Tag Pages
-pubDate: 21 January 2025
+title: 17 September 2019
+pubDate: 2019-09-17
 description: This post describes how I've been implementing tag functionality in my Astro blog.
 author: Astro Learner
 image:

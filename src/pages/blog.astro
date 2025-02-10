@@ -1,13 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import BlogPost from '../components/BlogPost.astro'
+//import BlogPost from '../components/BlogPost.astro'
+
+// Define the structure of the frontmatter section in our markdown files
+// This interface specifies that each post must have a publication date and title
+interface BlogPostFrontmatter {
+    pubDate: string;  // The publication date stored as a string (e.g., "2024-02-01")
+    title: string;    // The title of the blog post
+}
+
+// Define the complete structure of a blog post file
+// This includes both the URL where it will be published and its frontmatter content
+interface BlogPostData {
+    url: string;                          // The URL path where the post will be accessible
+    frontmatter: BlogPostFrontmatter;     // The post's frontmatter data (defined above)
+}
+
+// Get all markdown files and sort them by publication date
 const allPosts = Object.values(
-    import.meta.glob('./posts/*.md', { eager: true })
-);
+    // import.meta.glob loads all .md files from the posts directory
+    // BlogPostData tells TypeScript the expected structure of each file
+    // { eager: true } means load all files immediately instead of lazy loading
+    import.meta.glob<BlogPostData>('./posts/*.md', { eager: true })
+).sort((a, b) => {
+    // Convert publication dates to timestamps and subtract them
+    // b - a gives us reverse chronological order (newest first)
+    return new Date(b.frontmatter.pubDate).getTime() - 
+           new Date(a.frontmatter.pubDate).getTime();
+});
+
 const pageTitle = "My Astro Learning Blog";
 ---
 <BaseLayout pageTitle={pageTitle}>
   <p>This is where I will post about my journey learning Astro.</p>
+  {allPosts.map((post: any) => <li><a href={post.url}>{post.frontmatter.title}</a></li>)}
+  <!--
   <table>
     <thead>
       <tr>
@@ -24,4 +51,5 @@ const pageTitle = "My Astro Learning Blog";
       )}
   </tbody>
   </table>
+-->
 </BaseLayout>
